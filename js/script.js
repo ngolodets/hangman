@@ -8,9 +8,9 @@ var originalLength = wordArray.length;
     wordArray[i] = "_";
     }
 var answerArray = [];
-for (var i = 0; i < word.length; i++) {
-  answerArray[i] = "_";
-}
+//for (var i = 0; i < word.length; i++) {
+  //answerArray[i] = "_";
+//}
 var remainingLetters = word.length;
 
 var tries = 10;
@@ -54,6 +54,7 @@ btnEl1.addEventListener("click", function(e) {
   }
   triesCount();
   showTries();
+  //result();
 });
 
 
@@ -75,22 +76,9 @@ for (var i = 0; i < wordArray.length; i++) {
   }
 }
 }};
-
-var Word = function(){
-  this.letters = [];
-
-  this.getLetters = function(newWord) {
-      var letters = newWord.split('');
-      for (var i = 0, length = letters.length; i < length; i++) {
-          var letterObject = new Letter(letters[i]);
-          this.letters.push(letterObject);
-      }
-  }};
-
-Word();
   
 var result = function () {
-    var wordHolder = pEl2;
+    var wordHolder = inputEl1;
     correct = document.createElement('ul');
 
     for (var i = 0; i < word.length; i++) {
