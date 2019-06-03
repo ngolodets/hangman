@@ -1,9 +1,32 @@
-header, main, footer {
+main {
   width: 70%;
   border: 1px solid black;
   border-radius: 20px 0 20px 0;
   margin: 1em auto;
   text-align: center;
+}
+
+header {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 20px 0 20px 0;
+  margin: 1em auto;
+  text-align: left;
+  align-content: cover;
+  object-fit: cover;
+  color: white;
+  image-resolution: 300dpi;
+  background-image: url("https://store-images.s-microsoft.com/image/apps.23216.9007199266246289.99eca207-26e7-4c4a-b02f-3ea96d21b37b.f89edb6e-7a3c-44a8-9e93-aac220a9051f?mode=scale&q=90&h=400&w=800&background=%23288C67");
+}
+
+footer {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 20px 0 20px 0;
+  margin: 1em auto;
+  color: white;
+  text-align: center;
+  background-image: url("https://store-images.s-microsoft.com/image/apps.23216.9007199266246289.99eca207-26e7-4c4a-b02f-3ea96d21b37b.f89edb6e-7a3c-44a8-9e93-aac220a9051f?mode=scale&q=90&h=400&w=800&background=%23288C67");
 }
 
 #instructions {
