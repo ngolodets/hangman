@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Mandali&display=swap" rel="stylesheet">
+  <title>Hangman</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Hangman</h1>
+    <h2>Enjoy!</h2>
+  </header>
+  <main>
+    <div id="instructions">
+      <h3>Game Instructions:</h3>
+      <p id="rules">A player must select a letter of the alphabet. If the letter is contained in the word, take another turn guessing a letter. 
+      To reveal a letter, type it into the box, which will then trigger the letter to be revealed, if it is contained in the word.  
+      If the letter is not contained in the word, click the Try Again button, and a portion of the hangman will be added. 
+      The game continues until either the word is guessed or all the parts of the hangman are displayed - you have 10 tries. Good luck!</p>
+    </div>
+    <div id="enterguesses">
+      <h3>Play a Game:</h3>
+      <ul id="gameword"></ul>
+    </div>
+    <div id="game">
+      <p id="givenword"><span id="blankspaces"></span></p>
+      <p></p>
+      <p id="playletter"></p>
+      <input id="letter1" type="text" name="letterinput" placeholder="Enter your guess">
+      <button id="letter">Enter Your Letter</button>
+      </br>
+      <aside>
+        <p id="tries">You have <span id="span1">10</span> guesses left</p>
+      </aside>
+      <button id="reset" type="reset" value="Reset" onclick="window.location.reload()">Start New Game</button>
+      <p id="output"></p>
+    </div>
+    <div id="drawing">
+      <canvas id="hangman"></canvas>
+    </div>
+  </main>
+  <footer>
+    <p id="copyright">Nina's Game 2019</p>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
