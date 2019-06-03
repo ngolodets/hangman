@@ -4,13 +4,20 @@ var word = givenWords[Math.floor(Math.random() * givenWords.length)];
 var gameWord = document.getElementById("gameword").innerHTML = word;
 var wordArray = gameWord.split("");
 var originalLength = wordArray.length;
-    for (var i = 0; i < originalLength; i ++) {
-    wordArray[i] = "_";
-    }
+    //for (var i = 0; i < originalLength; i ++) {
+    //wordArray[i] = "_";
+    //}
+var chosenWord = "";
 var answerArray = [];
-//for (var i = 0; i < word.length; i++) {
-  //answerArray[i] = "_";
-//}
+var numBlanks = 0;
+var blankAndSuccesses = [];
+var wrongGuesses =[];
+    //for (var i = 0; i < word.length; i++) {
+    //answerArray[i] = "_";
+    //}
+var guessingWord = [];
+var currentWordIndex;
+
 var remainingLetters = word.length;
 
 var tries = 10;
@@ -22,6 +29,7 @@ var inputElLtr = document.querySelector('[name="letterinput"]');
 var pEl1 = document.getElementById("givenword");
 var pEl2 = document.getElementById("playletter");
 var pEl3 = document.getElementById("output");
+var pEl4 = document.getElementById("blanksandsuccesses");
 var sEl1 = document.getElementById("span1");
 var inputEl1 = document.getElementById("letter1");
 inputEl1.style.display = 'inline';
@@ -34,26 +42,107 @@ var cnvEl1 = document.getElementById("hangman");
 var currentWordIndex = 0;
 var select = 0;
 
-for (var i = 0; i < word.length; i++) {
-  word[i] = "_";
-}
+//for (var i = 0; i < word[currentWordIndex].length; i++) {
+  //guessingWord.push("_");
+//}
 
 var triesCount = function () {
   var sEl1 = document.getElementById("span1").innerHTML = tries;
   tries = tries - 1;
 };
 
+function startGame() {
+  tries = 10;
+  chosenWord = gameWord;
+  answerArray = chosenWord.split("");
+  numBlanks = answerArray.length;
+  console.log(chosenWord);
+
+  blankAndSuccesses = [];
+  wrongGuesses = [];
+
+  for (var i = 0; i <numBlanks; i++) {
+    blankAndSuccesses.push("_");
+  }
+
+  
+  console.log(blankAndSuccesses);
+  document.getElementById("span1").innerHTML = tries;
+  document.getElementById("word-blanks").innerHTML = blankAndSuccesses.join(" ");
+};
+
+function checkLetters(letter) {
+  var letterInWord = false;
+
+  for (var i = 0; i < numBlanks; i++) {
+    if (chosenWord[i] === letter) {
+      letterInWord = true;
+    }
+  }
+  if (letterInWord) {
+    for (var j = 0; j < numBlanks; j++) {
+      if (chosenWord[j] === letter) {
+        blankAndSuccesses[j] = letter;
+      }
+    }
+    
+    console.log(blankAndSuccesses);
+    document.getElementById("blanksandsuccesses").innerHTML = blankAndSuccesses.join(" ");
+  } else {
+    wrongGuesses.push(letter);
+  }
+};
+
+function roundComplete() {
+  document.getElementById("word-blanks").innerHTML = wrongGuesses.join(" ");
+
+  if (answerArray.toString() === blankAndSuccesses.toString()) {
+    alert("You win!");
+
+    startGame();
+  }
+  else if (tries === 0) {
+    alert("Game over!")
+
+    startGame();
+  }
+};
+
+startGame();
+
+
+document.onkeyup = function(e) {
+  var letterGuessed = String.fromCharCode(e.which).toLowerCase();
+  checkLetters(letterGuessed);
+  roundComplete();
+}
+
 
 btnEl1.addEventListener("click", function(e) {
   var letterInput = inputElLtr.value;
   inputElLtr.value = ""; 
-  wordArray = wordArray + letterInput;
-  pEl1.textContent = wordArray;
+  answerArray = answerArray + letterInput;
+  pEl1.textContent = answerArray;
+  console.log(answerArray);
   if (tries <= 0){
     alert("You lost!");
   }
+  /*
+  if (wordArray.toString() === answerArray.toString()) {
+    for (var i = 0; i < wordArray.length; i++) {
+    wordArray.push(pEl1.textContent);
+    wordArray.toString("");
+  } else {
+    tries = tries - 1;
+  } 
+} 
+*/
+        
   triesCount();
   showTries();
+  checkLetters();
+  //evaluateGuess();
+  //makeGuess();
   //result();
 });
 
@@ -77,27 +166,8 @@ for (var i = 0; i < wordArray.length; i++) {
 }
 }};
   
-var result = function () {
-    var wordHolder = inputEl1;
-    correct = document.createElement('ul');
 
-    for (var i = 0; i < word.length; i++) {
-      correct.setAttribute('id', 'my-word');
-      guess = document.createElement('li');
-      guess.setAttribute('class', 'guess');
-      if (word[i] === "-") {
-        guess.innerHTML = "-";
-        space = 1;
-      } else {
-        guess.innerHTML = "_";
-      }
 
-      answerArray.push(guess);
-      wordHolder.appendChild(correct);
-      correct.appendChild(guess);
-    }
-  };
-  
 
 
 

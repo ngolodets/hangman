@@ -7,7 +7,7 @@ header, main, footer {
 }
 
 #instructions {
-  border-bottom: 1px solid black; 
+  border-bottom: 1px solid rgb(0, 195, 255); 
 }
 
 #gameword {
@@ -16,6 +16,7 @@ header, main, footer {
 
 h3 {
   border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(0, 195, 255);
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -36,7 +37,7 @@ h3 {
 
 body {
   font-family: 'Mandali', sans-serif;
-  background-color: rgb(0, 230, 200);
+  background-color: rgb(204, 255, 255);
 }
 
 #rules {
@@ -44,5 +45,5 @@ body {
 }
 
 header, footer {
-  background-color: rgb(0, 247, 255);
+  background-color: rgb(0, 195, 255);
 }
