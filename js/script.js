@@ -1,6 +1,7 @@
 
 var givenWords = ["fish", "world", "cat", "insanity", "crazy"];
 var word = givenWords[Math.floor(Math.random() * givenWords.length)];
+console.log(word);
 var gameWord = document.getElementById("gameword").innerHTML = word;
 var wordArray = gameWord.split("");
 var originalLength = wordArray.length;
@@ -98,11 +99,13 @@ function roundComplete() {
 
   if (answerArray.toString() === blankAndSuccesses.toString()) {
     alert("You win!");
+    console.log("You win!");
 
     startGame();
   }
   else if (tries === 0) {
-    alert("Game over!")
+    alert("Game over!");
+    console.log("Game over!");
 
     startGame();
   }
@@ -120,13 +123,16 @@ document.onkeyup = function(e) {
 
 btnEl1.addEventListener("click", function(e) {
   var letterInput = inputElLtr.value;
+  var ansLetters = String.fromCharCode(e.which).toLowerCase();
   inputElLtr.value = ""; 
   answerArray = answerArray + letterInput;
-  pEl1.textContent = answerArray;
+  //pEl1.textContent = answerArray;
   console.log(answerArray);
   if (tries <= 0){
-    alert("You lost!");
+    alert("Game over!");
+    console.log("Game over!");
   }
+
   /*
   if (wordArray.toString() === answerArray.toString()) {
     for (var i = 0; i < wordArray.length; i++) {
@@ -137,10 +143,14 @@ btnEl1.addEventListener("click", function(e) {
   } 
 } 
 */
-        
+  
+    
+  checkLetters(ansLetters);
+  roundComplete();
+   
   triesCount();
   showTries();
-  checkLetters();
+  //checkLetters(answerStr);
   //evaluateGuess();
   //makeGuess();
   //result();
@@ -158,10 +168,12 @@ var showTries = function () {
 sEl1.innerHTML = tries;
 if (tries < 1) {
   document.getElementById("tries").textContent = "Game Over";
+  console.log("Game over!")
 } else {
 for (var i = 0; i < wordArray.length; i++) {
   if (counter + space === wordArray.length) {
     document.getElementById("tries").textContent = "You Win!";
+    console.log("You win!")
   }
 }
 }};

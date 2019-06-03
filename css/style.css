@@ -10,12 +10,16 @@ header, main, footer {
   border-bottom: 1px solid rgb(0, 195, 255); 
 }
 
+#enterguesses {
+  border-bottom: 1px solid rgb(0, 195, 255);
+  
+}
+
 #gameword {
   text-align: center;
 }
 
 h3 {
-  border-bottom: 1px solid black;
   border-bottom: 1px solid rgb(0, 195, 255);
   padding: 10px;
   margin-bottom: 10px;
@@ -25,14 +29,14 @@ h3 {
 #letter, #reset {
   background-color: rgb(0, 195, 255);
   border: 1px solid black;
-  border-radius: 0 10px 0 10px;
   text-align: center;
+  border-radius: 20px 0 20px 0;
 }
 
 #letter1 {
   border: 1px solid black;
-  border-radius: 0 10px 0 10px;
   text-align: center;
+  border-radius: 20px 0 20px 0;
 }
 
 body {
